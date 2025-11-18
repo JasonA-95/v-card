@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-card</title>
+    <style>
+        body {
+            display: grid;
+            place-items: center; /* centre la carte verticalement et horizontalement */
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .carte {
+            width: 300px;
+            height: 150px;
+            background-image: url('téléchargement.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* espace entre le haut et le bas */
+            padding: 15px;
+            color: white;
+            position: relative;
+        }
+
+        /* Top-right info */
+        .carte-top {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* aligné à droite */
+        }
+
+        .carte-top p {
+            margin: 0;
+        }
+
+        .carte-top .phone {
+            margin-top: 5px; /* espace entre mail et téléphone */
+        }
+
+        /* Bottom-right info */
+        .carte-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end; /* aligné à droite */
+        }
+
+        .carte-bottom h1 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .carte-bottom p {
+            margin: 0;
+            font-size: 1em;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="carte">
+        <!-- Top-right fake contact -->
+        <div class="carte-top">
+            <p class="email">jeanmonte@example.com</p>
+            <p class="phone">+33 6 12 34 56 78</p>
+        </div>
+
+        <!-- Bottom-right main info -->
+        <div class="carte-bottom">
+            <h1>Jean Monte</h1>
+            <p>Fabricant d'escaliers</p>
+        </div>
+    </div>
+</body>
+</html>
