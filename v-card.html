@@ -140,6 +140,33 @@
             font-size: 0.9em;
         }
     }
+
+    /* Nouveaux div small/medium/large */
+    #small, #medium, #large {
+        display: none;
+        font-size: 1.2em;
+        text-align: center;
+        margin-top: 20px;
+        font-weight: bold;
+    }
+
+    @media (max-width: 479px) {
+        #small {
+            display: block;
+        }
+    }
+
+    @media (min-width: 480px) and (max-width: 1023px) {
+        #medium {
+            display: block;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        #large {
+            display: block;
+        }
+    }
 </style>
 </head>
 <body>
@@ -168,5 +195,10 @@
             </div>
         </div>
     </div>
+
+    <!-- Nouveaux div small/medium/large -->
+    <div id="small">small</div>
+    <div id="medium">medium</div>
+    <div id="large">large</div>
 </body>
 </html>
