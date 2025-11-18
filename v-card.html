@@ -1,81 +1,152 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>V-card</title>
-    <style>
-        body {
-            display: grid;
-            place-items: center; /* centre la carte verticalement et horizontalement */
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V-card</title>
+<style>
+    body {
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+    }
 
+    .carte {
+        width: 300px;
+        height: 150px;
+        background-image: url('téléchargement.jpg');
+        background-size: cover;
+        background-position: center;
+        border-radius: 14px;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 15px;
+        color: #fff;
+        position: relative;
+        transition: box-shadow 0.3s, transform 0.3s;
+        overflow: hidden;
+        border: 2px solid rgba(255,255,255,0.18);
+    }
+
+    .carte::before {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(120deg, rgba(0,0,0,0.55) 60%, rgba(0,123,255,0.18) 100%);
+        z-index: 0;
+    }
+
+    .carte-content {
+        position: relative;
+        z-index: 1;
+        height: 100%;
+    }
+
+    .carte:hover {
+        box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+        transform: translateY(-6px) scale(1.03);
+    }
+
+    /* Top-right info */
+    .carte-top {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .carte-top a {
+        color: #fff;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        margin-top: 5px;
+        transition: color 0.3s, transform 0.3s;
+    }
+
+    .carte-top a:first-child {
+        margin-top: 0;
+    }
+
+    .carte-top a svg {
+        margin-right: 6px;
+        transition: transform 0.3s;
+    }
+
+    .carte-top a:hover svg {
+        transform: scale(1.2);
+    }
+
+    .carte-top a:hover {
+        color: #00bfff;
+    }
+
+    /* Bottom-right info positionné en bas */
+    .carte-bottom {
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        z-index: 1;
+    }
+
+    .carte-bottom h1 {
+        margin: 0;
+        font-size: 1.2em;
+    }
+
+    .carte-bottom p {
+        margin: 0;
+        font-size: 1em;
+    }
+
+    /* Responsive */
+    @media (max-width: 400px) {
         .carte {
-            width: 300px;
-            height: 150px;
-            background-image: url('téléchargement.jpg');
-            background-size: cover;
-            background-position: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* espace entre le haut et le bas */
-            padding: 15px;
-            color: white;
-            position: relative;
+            width: 95vw;
+            height: auto;
+            min-height: 120px;
+            padding: 10px;
         }
-
-        /* Top-right info */
-        .carte-top {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end; /* aligné à droite */
-        }
-
-        .carte-top p {
-            margin: 0;
-        }
-
-        .carte-top .phone {
-            margin-top: 5px; /* espace entre mail et téléphone */
-        }
-
-        /* Bottom-right info */
-        .carte-bottom {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end; /* aligné à droite */
-        }
-
         .carte-bottom h1 {
-            margin: 0;
-            font-size: 1.2em;
-        }
-
-        .carte-bottom p {
-            margin: 0;
             font-size: 1em;
         }
-
-    </style>
+        .carte-bottom p {
+            font-size: 0.9em;
+        }
+    }
+</style>
 </head>
 <body>
     <div class="carte">
-        <!-- Top-right fake contact -->
-        <div class="carte-top">
-            <p class="email">jeanmonte@example.com</p>
-            <p class="phone">+33 6 12 34 56 78</p>
-        </div>
+        <div class="carte-content">
+            <!-- Top-right contact -->
+            <div class="carte-top">
+                <a href="mailto:jeanmonte@example.com" aria-label="Envoyer un email à Jean Monte">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 20v-9.99l8 6.99 8-6.99V20H4z"/>
+                    </svg>
+                    jeanmonte@example.com
+                </a>
+                <a href="tel:+33612345678" aria-label="Appeler Jean Monte">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 24 24">
+                        <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z"/>
+                    </svg>
+                    +33 6 12 34 56 78
+                </a>
+            </div>
 
-        <!-- Bottom-right main info -->
-        <div class="carte-bottom">
-            <h1>Jean Monte</h1>
-            <p>Fabricant d'escaliers</p>
+            <!-- Bottom-right main info -->
+            <div class="carte-bottom">
+                <h1>Jean Monte</h1>
+                <p>Fabricant d'escaliers</p>
+            </div>
         </div>
     </div>
 </body>
